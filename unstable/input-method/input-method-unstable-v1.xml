@@ -3,6 +3,7 @@
 
   <copyright>
     Copyright © 2012, 2013 Intel Corporation
+    Copyright © 2015 Jan Arne Petersen
 
     Permission is hereby granted, free of charge, to any person obtaining a
     copy of this software and associated documentation files (the "Software"),
@@ -24,7 +25,7 @@
     DEALINGS IN THE SOFTWARE.
   </copyright>
 
-  <interface name="zwp_input_method_context_v1" version="1">
+  <interface name="zwp_input_method_context_v1" version="2">
     <description summary="input method context">
       Corresponds to a text input on input method side. An input method context
       is created on text input activation on the input method side. It allows to
@@ -203,7 +204,9 @@
       <arg name="serial" type="uint" summary="serial of the latest known text input state"/>
       <arg name="direction" type="uint"/>
     </request>
-
+    <request name="close_panel" since="2">
+      <arg name="flags" type="uint"/>
+    </request>
     <event name="surrounding_text">
       <description summary="surrounding text event">
 	The plain surrounding text around the input position. Cursor is the
@@ -239,7 +242,7 @@
     </event>
   </interface>
 
-  <interface name="zwp_input_method_v1" version="1">
+  <interface name="zwp_input_method_v1" version="2">
     <description summary="input method">
       An input method object is responsible to compose text in response to
       input from hardware or virtual keyboards. There is one input method
